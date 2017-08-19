@@ -5,6 +5,15 @@ app.controller('EmployeeController', ['$http', function($http){
     self.employees = [];
 
 
+self.getMonthlyExpenditures = function(){
+    var total = 0
+      for(var i = 0; i < self.employees.length; i++){
+       var amount = self.employees[i].salary;
+       total += amount;
+    }
+    return total;
+}
+
 self.getEmployees = function(){
     $http({
         method: 'GET',
