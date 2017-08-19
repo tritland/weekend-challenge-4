@@ -10,25 +10,25 @@
 
 </head>
 
-<body>
+<body ng-app="EmployeeApp" ng-controller="EmployeeController as vm">
     <h1>Employee Information</h1>
     <form id="employeeInputs">
         <div class="firstLine">
             <label for="firstName">First Name</label>
-            <input type="text" id="firstNameInput">
+            <input type="text" id="firstNameInput" ng-model="vm.newEmployee.firstName">
        
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastNameInput">
+            <input type="text" id="lastNameInput" ng-model="vm.newEmployee.lastName">
         </div>
         <div class="secondLine">
             <label for="jobTitle">Job Title</label>
-            <input type="text" id="jobTitleInput">
+            <input type="text" id="jobTitleInput" ng-model="vm.newEmployee.jobTitle">
        
             <label for="salary">Annual Salary</label>
-            <input type="number" id="salaryInput">
+            <input type="number" id="salaryInput" ng-model="vm.newEmployee.salary">
         </div>
 
-        <button id="submitButton">Submit</button>
+        <button id="submitButton" ng-click="vm.postEmployee()">Submit</button>
 
     </form>
 
@@ -45,11 +45,11 @@
         </thead>
         <tbody>
 
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr ng-repeat="employee in vm.employees">
+                <td>{{employee.first_name}}</td>
+                <td>{{employee.last_name}}</td>
+                <td>{{employee.job_title}}</td>
+                <td>{{employee.salary}}</td>
             </tr>
 
         </tbody>
